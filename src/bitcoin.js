@@ -4,15 +4,14 @@
 import React from 'react';
 import _ from 'lodash';
 
-import _data from './bitcoin-data';
+import _data from './btc-usd';
 import { sma, normalize } from './lib';
 import Graph from './graph';
 
 export default () => {
    const generateData1 = () => {
-      const dateDescription = date => `${date.getFullYear()}/${date.getMonth() + 1}`;
       return _data.map(o => {
-         return { date: dateDescription(new Date(o["Date"])), V: o["Close"] };
+         return { date: o["Date"], V: parseFloat(o["Close"]) };
       })
    }
    const generateData2 = () => {
